@@ -99,6 +99,10 @@
                            <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('peserta','image_256', record.id.raw_value)}')"/>
                            
                         </t>
+                        <t t-else="">
+                           <div class="o_kanban_image_fill_left d-none d-md-block" t-attf-style="background-image:url('#{kanban_image('peserta','avatar_128', record.id.raw_value)}')"/>
+                           
+                        </t>
                         <div class="oe_kanban_details">
                            <h4>
                                  <a type="open"><field name="name"/></a>
