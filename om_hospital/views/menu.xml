@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-   <menuitem id="hospital_menu_root" name="Hospital" sequence="10" web_icon="om_hospital,static/description/icon.png"/>
+   <menuitem id="hospital_menu_root" name="Hospital" sequence="-1" web_icon="om_hospital,static/description/icon.png"/>
    <!-- This Menu Item Must have a parent -->
    <menuitem id="menu_patient_master" name="Patient Details" parent="hospital_menu_root" sequence="10"/>
-   <menuitem id="menu_patient" name="Patient" parent="menu_patient_master" sequence="10"/>
 </odoo>
