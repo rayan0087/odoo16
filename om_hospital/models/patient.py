@@ -9,6 +9,7 @@ class HospitalPatient(models.Model):
    age = fields.Integer(string='Umur')
    reference = fields.Char(string='Reference')
    gender = fields.Selection(string='Jenis Kelamin', selection=[('l', 'Laki Laki'), ('p', 'Perempuan')])
+   active = fields.Boolean(string='Active', default=True)
    
    
    

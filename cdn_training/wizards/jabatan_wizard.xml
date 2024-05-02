@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data>
+      <!-- jabatan.wizard form view -->
+      <record id="jabatan_wizard_view_form" model="ir.ui.view">
+         <field name="name">jabatan.wizard.view.form</field>
+         <field name="model">jabatan.wizard</field>
+         <field name="arch" type="xml">
+            <form string="">
+               <group>
+                  <field name="jabatan_id"/>
+                  <!-- <field name="instruktur_ids"/> -->
+               </group>
+               <footer>
+                  <button string="Tambah Instruktur" name="tambah_instruktur" type="object" class="btn-primary" confirm="Apakah anda yakin akan menambah Instruktur pada semua Sesi yang dipilih ini ?" />
+                  <button string="Batal" class="btn-secondary" special="cancel"/>
+               </footer>
+            </form>
+         </field>
+      </record>
+
+      <!-- jabatan.wizard action window -->
+      <record id="wizard_jabatan_action" model="ir.actions.act_window">
+         <field name="name">Jabatan Instruktur</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">jabatan.wizard</field>
+         <field name="view_mode">form</field>
+         <field name="target">new</field>
+      </record>
+
+      <!-- This Menu Item must have a parent and an action -->
+      <menuitem id="jabatan_wizard_menu_act" name="Jabatan Instruktur" parent="pengaturan_menu_categ" action="wizard_jabatan_action" sequence="24"/>
+   
+   </data>
+</odoo>

@@ -32,6 +32,7 @@
                      <group>
                         <field name="gender"/>
                         <field name="reference"/>
+                        <field name="active"/>
                      </group>
                   </group>
                </sheet>
@@ -50,6 +51,13 @@
                <field name="age"/>
                <field name="gender"/>
                <field name="reference"/>
+               <filter name="filter_laki" string="Laki Laki" domain="[('gender', '=', 'l')]"/>
+               <filter name="filter_perempuan" string="Perempuan" domain="[('gender', '=', 'p')]"/>
+               <separator/>
+               <filter name="filter_kids" string="Anak Anak" domain="[('age', '&lt;=', 5)]"/>
+               <group expand="0" string="Group By">
+                  <filter name="group_by_gender" string="Jenis Kelamin" context="{'group_by':'gender'}"/>
+               </group>
             </search>
          </field>
       </record>

@@ -9,6 +9,7 @@
             <tree>
                <!-- Add your fields here -->
                <field name="name"/>
+               <field name="jabatan_id"/>
                <field name="street"/>
                <field name="city"/>
                <field name="email"/>
@@ -27,9 +28,18 @@
                <sheet>
                   <group>
                      <field name="image_1920" widget="image" class="oe_avatar"/>
-                     
                   </group>
-                  <group>
+                  <group string="Jabatan Instruktur">
+                     <group>
+                        <field name="jabatan_id"/>
+                        <!-- <field name="jabatan_selection"/> -->
+                     </group>
+                     <group>
+                        <field name="jabatan_staf" attrs="{'invisible':[('jenis_jabatan','!=','3')]}"/>
+                        <field name="jenis_jabatan" attrs="{'invisible':True}"/>
+                     </group>
+                  </group>
+                  <group string="Data Instruktur">
                      <group>
                         <!-- Add your fields here -->
                         <field name="name"/>
