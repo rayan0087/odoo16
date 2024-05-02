@@ -9,8 +9,8 @@ class Jabatan(models.Model):
    name           = fields.Char(string='Nama Jabatan', required=True)
    jenis_jabatan  = fields.Selection([('1', 'Kepala / Pimpinan Lembaga'), ('2', 'Wakil Kepala Lembaga'), ('3', 'Staff ')], default="3", string='Jenis Jabatan', required=True)
    keterangan     = fields.Text('keterangan')
-   pejabat        = fields.Many2one(comodel_name='instruktur', string='Daftar Pejabat', readonly=True)
-   instruktur_ids = fields.Many2many('instruktur', string='Instruktur')
+   pejabat        = fields.Many2one(comodel_name='instruktur', string='Daftar Pejabat')
+   # instruktur_ids = fields.Many2many('instruktur', string='Instruktur')
 
    @api.constrains('jenis_jabatan')
    def _check_jabatan_constraints(self):

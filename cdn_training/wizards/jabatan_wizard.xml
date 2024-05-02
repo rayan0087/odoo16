@@ -8,11 +8,17 @@
          <field name="arch" type="xml">
             <form string="">
                <group>
-                  <field name="jabatan_id"/>
+                  <group>
+                     <field name="jabatan_id"/>
+                     <field name="instruktur_name"/>
+                  </group>
+                  <group>
+                     <field name="instruktur_id" />
+                  </group>
                   <!-- <field name="instruktur_ids"/> -->
                </group>
                <footer>
-                  <button string="Tambah Instruktur" name="tambah_instruktur" type="object" class="btn-primary" confirm="Apakah anda yakin akan menambah Instruktur pada semua Sesi yang dipilih ini ?" />
+                  <button string="Simpan" name="simpan" type="object" class="btn-primary" confirm="Apakah anda yakin akan mengganti jabatan pada instruktur yang dipilih ?" />
                   <button string="Batal" class="btn-secondary" special="cancel"/>
                </footer>
             </form>

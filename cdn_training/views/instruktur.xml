@@ -25,19 +25,22 @@
          <field name="model">instruktur</field>
          <field name="arch" type="xml">
             <form string="">
+               <!-- <header>
+                  <button string="Update Jabatan" name="action_update_jabatan" type="object" class="oe_highlight"/>
+               </header> -->
                <sheet>
                   <group>
                      <field name="image_1920" widget="image" class="oe_avatar"/>
                   </group>
                   <group string="Jabatan Instruktur">
                      <group>
-                        <field name="jabatan_id"/>
-                        <!-- <field name="jabatan_selection"/> -->
+                        <!-- <field name="jabatan_id" domain="[('jenis_jabatan','=','3')]"/> -->
+                        <field name="jabatan_id" readonly="1"/>
                      </group>
-                     <group>
+                     <!-- <group>
                         <field name="jabatan_staf" attrs="{'invisible':[('jenis_jabatan','!=','3')]}"/>
                         <field name="jenis_jabatan" attrs="{'invisible':True}"/>
-                     </group>
+                     </group> -->
                   </group>
                   <group string="Data Instruktur">
                      <group>
