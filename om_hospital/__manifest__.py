@@ -19,7 +19,7 @@
     'version': '16.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail', 'product'],
 
     'sequence': -100,
 
@@ -27,9 +27,10 @@
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
-        'views/patient.xml',
-        'views/female_patient.xml',
-        'views/appointment.xml',
+        'views/patient_view.xml',
+        'views/female_patient_view.xml',
+        'views/appointment_view.xml',
+        'views/patient_tag_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

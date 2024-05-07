@@ -5,4 +5,5 @@
    <!-- This Menu Item Must have a parent -->
    <menuitem id="menu_patient_master" name="Patient Details" parent="hospital_menu_root" sequence="10"/>
    <menuitem id="menu_appointment_master" name="Appointments" parent="hospital_menu_root" sequence="20"/>
+   <menuitem id="menu_config_master" name="Configuration" parent="hospital_menu_root" sequence="30"/>
 </odoo>

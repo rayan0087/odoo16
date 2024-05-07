@@ -24,6 +24,7 @@
             <form string="">
                <!-- Add your fields here -->
                <sheet>
+                  <field name="image" widget="image" class="oe_avatar"/>
                   <group>
                      <group>
                         <field name="name"/>
@@ -33,6 +34,7 @@
                      <group>
                         <field name="gender"/>
                         <field name="reference"/>
+                        <field name="tag_ids" widget="many2many_tags" options="{'color_field' : 'color'}"/>
                         <field name="active" readonly="1"/>
                      </group>
                   </group>
