@@ -27,6 +27,7 @@
                      <group>
                         <!-- Add your fields here -->
                         <field name="name"/>
+                        <field name="sequence"/>
                      </group>
                      <group>
                         <!-- Add your fields here -->

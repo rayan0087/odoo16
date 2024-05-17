@@ -18,6 +18,7 @@
                // "db_training",
                "-u",
                "om_hospital",
+               // "om_hospital_inheritance",
          ],
          "cwd": "C://Odoo//Odoo16//server//",
          "env": {},

@@ -7,17 +7,19 @@
          <field name="model">hospital.appointment</field>
          <field name="arch" type="xml">
             <tree 
-               decoration-success="state == 'done'" 
-               decoration-info="state == 'draft'" 
-               decoration-danger="state == 'cancelled'" 
-               decoration-muted="state == 'in_consultation'" 
                sample="1"
                multi_edit="1">
+
+               <header>
+                  <button string="In Consultation" name="action_state_in_consultation" type="object" class="oe_highlight"/>
+               </header>
                <!-- Add your fields here -->
-               <field name="name"/>
-               <field name="patient_id"/>
+               <field name="name" decoration-bf="1"/>
+               <field name="patient_id" decoration-it="1"/>
                <field name="ref" optional="hide"/>
-               <field name="gender" optional="hide"/>
+               <field name="gender" decoration-bf="1" 
+                                    decoration-it="1" 
+                                    decoration-success="gender=='p'"/>
                <field name="doctor_id" widget="many2one_avatar_user"/>
                <field name="appointment_time"/>
                <field name="booking_date" optional="show"/>
@@ -28,6 +30,20 @@
                   decoration-danger="state == 'cancelled'" 
                   decoration-muted="state == 'in_consultation'" 
                   widget="badge"/>
+
+               <button  name="action_state_done" class="fa fa-check btn-success" 
+                        attrs="{'invisible':[('state', '!=', 'in_consultation')]}"
+                        type="object"/>
+                  
+               <button  name="%(om_hospital.cancel_appointment_wizard_action)d" 
+                        context="{'default_reason': 'tes', 'hide_appointment': 1}"
+                        attrs="{'invisible':[('state', 'not in', ('draft','in_consultation'))]}" 
+                        type="action" class="fa fa-times btn-danger"/>
+
+               <groupby name="patient_id">
+                  <button name="action_test" string="click me" type="object" class="oe_highlight"/>
+               </groupby>
+                  
             </tree>
          </field>
       </record>
@@ -42,8 +58,9 @@
                <header>
                   <button string="In Consultation" data-hotkey="v" name="action_state_in_consultation" type="object" class="oe_highlight" states="draft"/>
                   <button string="Mark as Done" data-hotkey="z" name="action_state_done" type="object" class="oe_highlight" states="in_consultation"/>
-                  <button string="Cancel" data-hotkey="x" name="action_state_cancel" type="object" class="oe_highlight" states="draft,in_consultation"/>
-                  <button string="Reset to Draft" name="action_state_draft" type="object" class="oe_highlight" states="cancel"/>
+                  <button string="Cancel" data-hotkey="x" context="{'default_reason': 'tes', 'hide_appointment': 1}" name="%(om_hospital.cancel_appointment_wizard_action)d" type="action" class="oe_highlight" states="draft,in_consultation"/>
+                  <!-- <button string="Cancel" data-hotkey="x" name="action_state_cancel" type="object" class="oe_highlight" states="draft,in_consultation"/> -->
+                  <button string="Reset to Draft" name="action_state_draft" type="object" class="oe_highlight" states="done"/>
                
                   <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,in_consultation,done"/>
                </header>
@@ -56,17 +73,18 @@
                   <group>
                      <group>
                         <field name="name" default_focus="1"/>
-                        <field name="doctor_id" widget="many2one_avatar_user"/>
                         <field name="patient_id"/>
+                        <field name="ref" readonly="1" force_save="1"/>
                         <field name="gender"/>
-                        <field name="ref"/>
+                        <field name="doctor_id" widget="many2one_avatar_user"/>
+                        <field name="booking_date" help="Tanggal Booking"/>
                      </group>
                      <group>
                         <field name="hide_sales_price"/>
                         <field name="appointment_time"/>
-                        <field name="booking_date" help="Tanggal Booking"/>
-                        <button string="Object Button" name="action_test" 
-                           confirm="apa kamu yakin melanjutkan ? "
+                        <field name="operation"/>
+                        <button string="Redirect Button" name="action_test" 
+                           confirm="apa kamu yakin melanjutkan redirect ke halaman lain ? "
                            help="dengan klik tombol ini maka kamu akan melanjutkans"
                            groups="base.group_no_one"
                            type="object" class="oe_highlight"/>

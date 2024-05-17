@@ -26,11 +26,17 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'data/patient_tag_data.xml',
+        'data/patient.tag.csv',
+        'data/sequence_data.xml',
         'views/menu.xml',
         'views/patient_view.xml',
         'views/female_patient_view.xml',
-        'views/appointment_view.xml',
         'views/patient_tag_view.xml',
+        'views/appointment_view.xml',
+        'views/res_config_settings_views.xml',
+        'views/operation_view.xml',
+        'wizards/cancel_appointment.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+   <data>
+   
+      <!-- patient.tag form view -->
+      <record id="cancel_appointment_wizard_view_form" model="ir.ui.view">
+         <field name="name">cancel.appointment.wizard.view.form</field>
+         <field name="model">cancel.appointment.wizard</field>
+         <field name="arch" type="xml">
+            <form string="">
+               <group>
+                  <group>
+                     <!-- Add your fields here -->
+                     <field name="appointment_id" invisible="context.get('hide_appointment')" domain="[('state','=','draft')]"/>
+                     <field name="reason"/>
+                  </group>
+                  <group>
+                     <!-- Add your fields here -->
+                     <field name="cancel_date"/>
+                  </group>
+               </group>
+               <footer>
+                  <button string="Cancel Appointment" name="action_cancel_appointment" type="object" class="oe_highlight"/>
+                  <button special="cancel" string="Discard" type="object"/>
+               </footer>
+            </form>
+         </field>
+      </record>
+
+      <!-- patient.tag action window -->
+      <record id="cancel_appointment_wizard_action" model="ir.actions.act_window">
+         <field name="name">Cancel Appointment</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">cancel.appointment.wizard</field>
+         <field name="view_mode">form</field>
+         <field name="target">new</field>
+      </record>
+
+      <menuitem id="cancel_appointment_wizard_master" name="Cancel Appointment" action="cancel_appointment_wizard_action" parent="menu_appointment_master" sequence="20"/>
+
+   </data>
+</odoo>

@@ -6,12 +6,14 @@
          <field name="name">hospital.patient.view.tree</field>
          <field name="model">hospital.patient</field>
          <field name="arch" type="xml">
-            <tree>
+            <tree export_xlsx="0">
                <!-- Add your fields here -->
                <field name="name"/>
-               <field name="age"/>
+               <field name="age" avg="Average Age"/>
                <field name="reference"/>
+               <field name="appointment_count" sum="Total Appointment"/>
                <field name="gender"/>
+               <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
             </tree>
          </field>
       </record>
@@ -25,17 +27,32 @@
                <!-- Add your fields here -->
                <sheet>
                   <field name="image" widget="image" class="oe_avatar"/>
+                  <div class="oe_title">
+                     <h4>
+                        <field name="reference" readonly="1"/>
+                     </h4>
+                     <h2>
+                        <label for="name" string="Nama" class="oe_edit_only" invisible="1"/>
+                        <field name="name"/>
+                     </h2>
+                  </div>
                   <group>
                      <group>
-                        <field name="name"/>
                         <field name="date_of_birth"/>
                         <field name="age"/>
                      </group>
                      <group>
-                        <field name="gender"/>
-                        <field name="reference"/>
-                        <field name="tag_ids" widget="many2many_tags" options="{'color_field' : 'color'}"/>
+                        <field name="gender" widget="radio"/>
+                        <field name="tag_ids" widget="many2many_checkboxes" options="{'color_field' : 'color'}"/>
+                        <field name="appointment_count"/>
                         <field name="active" readonly="1"/>
+                     </group>
+                  </group>
+                  <group name="informasi_lainnya" string="Informasi Lainnya">
+                     <group>
+                        <field name="parent" attrs="{'invisible': [('age', '>', 18)]}"/>
+                        <field name="martial_status"/>
+                        <field name="partner_name" attrs="{'readonly': [('martial_status', '!=', 'married')]}"/>
                      </group>
                   </group>
                </sheet>
